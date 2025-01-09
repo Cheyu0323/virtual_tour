@@ -10,23 +10,15 @@ const EffectComposerContainer = () => {
     console.log("meshRef", meshRef);
     return (
         <>
-            <mesh ref={meshRef} position={[0, -10, 0]}>
-                <boxGeometry args={[10, 10, 10]} />
-                <meshStandardMaterial
-                    color="orange"
-                    emissiveIntensity={0}
-                    toneMapped={false}
-                    emissive="orange"
-                />
-            </mesh>
             <Suspense fallback={null}>
                 <EffectComposer autoClear={false}>
                     <Outline
-                        selection={[...highlightList, meshRef.current]}
+                        selection={highlightList}
                         selectionLayer={1}
-                        edgeStrength={100}
+                        edgeStrength={10}
                         pulseSpeed={0}
-                        kernelSize={0}
+                        visibleEdgeColor={0xfb5607}
+                        hiddenEdgeColor={0xfb5607}
                         blur={false}
                     />
 

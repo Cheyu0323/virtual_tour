@@ -35,7 +35,22 @@ const Scene = () => {
                 <Model />
                 <EffectComposerContainer />
                 <OrbitControl />
-
+                {/* <RoomAreaHotSpot
+                    floor="1F"
+                    position={[20, 35, -10]}
+                    title="廁所"
+                    onClick={() => {
+                        console.log("_");
+                    }}
+                />
+                <RoomAreaHotSpot
+                    floor="2F"
+                    position={[-3, 40, -14]}
+                    title="廁所"
+                    onClick={() => {
+                        console.log("_");
+                    }}
+                /> */}
                 <Environment preset="sunset" environmentIntensity={0.5} />
             </Canvas>
         </>

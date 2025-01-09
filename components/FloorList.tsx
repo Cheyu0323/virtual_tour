@@ -2,16 +2,19 @@ import React from "react";
 import ButtonIcon from "./ButtonIcon";
 import useSceneStore, { FloorType } from "@/store/useSceneStore";
 import useCameraStore from "@/store/useCameraStore";
+import useLightStore from "@/store/useLightStore";
 
 const FloorList = () => {
     const updateCameraPosition = useCameraStore().handleUpdateCameraPosition;
     const updateOrbitTarget = useCameraStore().handleUpdateOrbitTarget;
     const { currentFloor, handleSwitchFloor } = useSceneStore();
+    const restHighlightList = useLightStore().handleRestList;
 
     const handleClickHome = () => {
         updateCameraPosition({ x: 120, y: 40, z: 0 });
         updateOrbitTarget({ x: 0, y: 20, z: 0 });
         handleSwitchFloor("Sky");
+        restHighlightList();
     };
     const handleClickFloor = (floor: FloorType) => {
         handleSwitchFloor(floor);
