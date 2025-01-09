@@ -1,15 +1,36 @@
 import React from "react";
 import ButtonIcon from "./ButtonIcon";
 import useSceneStore, { FloorType } from "@/store/useSceneStore";
+import useCameraStore from "@/store/useCameraStore";
 
 const FloorList = () => {
+    const updateCameraPosition = useCameraStore().handleUpdateCameraPosition;
+    const updateOrbitTarget = useCameraStore().handleUpdateOrbitTarget;
     const { currentFloor, handleSwitchFloor } = useSceneStore();
 
     const handleClickHome = () => {
+        updateCameraPosition({ x: 20, y: 10, z: 0 });
+        updateOrbitTarget({ x: 0, y: 0, z: 0 });
         handleSwitchFloor("Sky");
     };
     const handleClickFloor = (floor: FloorType) => {
         handleSwitchFloor(floor);
+        switch (floor) {
+            case "1F":
+                updateCameraPosition({ x: 20, y: 10, z: 0 });
+                updateOrbitTarget({ x: 0, y: 0, z: 0 });
+                break;
+            case "2F":
+                updateCameraPosition({ x: 20, y: 10, z: 0 });
+                updateOrbitTarget({ x: 0, y: 5, z: 0 });
+                break;
+            case "3F":
+                updateCameraPosition({ x: 20, y: 10, z: 0 });
+                updateOrbitTarget({ x: 0, y: 10, z: 0 });
+                break;
+            default:
+                break;
+        }
     };
 
     return (

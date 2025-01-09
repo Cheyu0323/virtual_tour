@@ -14,7 +14,18 @@ const Model: React.FC = () => {
         console.log("- click mesh:", e.object.name);
     };
 
-    console.log("-currentFloor", currentFloor);
+    console.log("-materials", gltf.materials);
+
+    // 玻璃反射
+    const classMaterial = gltf.materials[
+        "Class_Material"
+    ] as THREE.MeshPhysicalMaterial;
+    classMaterial.transparent = true;
+    classMaterial.roughness = 0;
+    classMaterial.metalness = 1;
+    classMaterial.opacity = 0.6;
+    classMaterial.reflectivity = 1;
+
     useEffect(() => {
         const nodes = gltf.nodes;
         updateMaterialOpacity({

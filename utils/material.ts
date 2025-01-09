@@ -4,7 +4,7 @@ import gsap from "gsap";
 const updateMaterialOpacity = ({
     node,
     display,
-    opacity = 0.5,
+    opacity = 0.3,
     duration = 0.4,
 }: {
     node: THREE.Mesh;

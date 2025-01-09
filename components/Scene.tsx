@@ -1,9 +1,11 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, Stats } from "@react-three/drei";
+import { Environment, Stats } from "@react-three/drei";
 import React from "react";
 import * as THREE from "three";
 import Model from "./Model";
+import EffectComposerContainer from "./EffectComposerContainer";
+import OrbitControl from "./OrbitControl";
 
 const Scene = () => {
     return (
@@ -31,8 +33,9 @@ const Scene = () => {
             >
                 <Stats />
                 <Model />
-                <OrbitControls />
-                <Environment preset="sunset" environmentIntensity={1} />
+                <EffectComposerContainer />
+                <OrbitControl />
+                <Environment preset="sunset" environmentIntensity={0.7} />
             </Canvas>
         </>
     );

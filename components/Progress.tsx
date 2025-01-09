@@ -4,6 +4,8 @@ import React from "react";
 
 const Progress = () => {
     const { progress } = useProgress();
+    console.log("--progress", progress)
+
     return (
         <div
             id="progress"
