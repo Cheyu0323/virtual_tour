@@ -33,7 +33,11 @@ const OrbitControl = () => {
 
     const updateCameraOrbit = () => {
         if (controls.current == null) return;
-        controls.current.target.set(orbitTarget.x, orbitTarget.y, orbitTarget.z);
+        controls.current.target.set(
+            orbitTarget.x,
+            orbitTarget.y,
+            orbitTarget.z
+        );
     };
 
     useFrame(() => {
@@ -44,7 +48,7 @@ const OrbitControl = () => {
     useEffect(() => {
         if (controls.current == null) return;
         updateCameraOrbit();
-        console.log("-cameraPosition", cameraPosition)
+        console.log("-cameraPosition", cameraPosition);
         const tl = gsap.to(camera.position, {
             x: cameraPosition.x,
             y: cameraPosition.y,

@@ -9,24 +9,24 @@ const FloorList = () => {
     const { currentFloor, handleSwitchFloor } = useSceneStore();
 
     const handleClickHome = () => {
-        updateCameraPosition({ x: 20, y: 10, z: 0 });
-        updateOrbitTarget({ x: 0, y: 0, z: 0 });
+        updateCameraPosition({ x: 120, y: 40, z: 0 });
+        updateOrbitTarget({ x: 0, y: 20, z: 0 });
         handleSwitchFloor("Sky");
     };
     const handleClickFloor = (floor: FloorType) => {
         handleSwitchFloor(floor);
         switch (floor) {
             case "1F":
-                updateCameraPosition({ x: 20, y: 10, z: 0 });
+                updateCameraPosition({ x: 0.5, y: 100, z: 0 });
                 updateOrbitTarget({ x: 0, y: 0, z: 0 });
                 break;
             case "2F":
-                updateCameraPosition({ x: 20, y: 10, z: 0 });
-                updateOrbitTarget({ x: 0, y: 5, z: 0 });
+                updateCameraPosition({ x: 0.5, y: 120, z: 0 });
+                updateOrbitTarget({ x: 0, y: 20, z: 0 });
                 break;
             case "3F":
-                updateCameraPosition({ x: 20, y: 10, z: 0 });
-                updateOrbitTarget({ x: 0, y: 10, z: 0 });
+                updateCameraPosition({ x: 0.5, y: 130, z: 0 });
+                updateOrbitTarget({ x: 0, y: 40, z: 0 });
                 break;
             default:
                 break;

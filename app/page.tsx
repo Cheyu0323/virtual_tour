@@ -8,6 +8,7 @@ import { useProgress } from "@react-three/drei";
 import ButtonIcon from "@/components/ButtonIcon";
 import useSceneStore from "@/store/useSceneStore";
 import FloorList from "@/components/FloorList";
+import FloorInfoPanel from "@/components/FloorInfoPanel";
 gsap.registerPlugin(useGSAP);
 
 const Home = () => {
@@ -58,16 +59,17 @@ const Home = () => {
                 <div>
                     <ButtonIcon
                         icon="View"
-                        tooltip={{ txt: "Perspective", position: "left" }}
+                        tooltip={{ txt: "透視", position: "left" }}
                         className="bg-white hover:border-gray-300"
                         onClick={handleClickPerspective}
                     />
                 </div>
                 <FloorList />
+                <FloorInfoPanel />
                 <div>
                     <ButtonIcon
-                        icon="Map"
-                        tooltip={{ txt: "Floor Plan", position: "right" }}
+                        icon="Row"
+                        tooltip={{ txt: "資訊", position: "right" }}
                         className="bg-white hover:border-gray-300"
                     />
                 </div>

@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Map, House, Box, Droplet, Zap, Flame, Triangle } from "lucide-react";
+import { House, Box, Droplet, Zap, Flame, Triangle, Rows3 } from "lucide-react";
 
 type ButtonIconProps = {
-    icon: "Map" | "Home" | "View" | "Water" | "Zap" | "Flame";
+    icon: "Row" | "Home" | "View" | "Water" | "Zap" | "Flame";
     tooltip?: { txt: string; position: "left" | "right" };
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 };
@@ -14,7 +14,7 @@ const ButtonIcon: React.FC<
     ButtonIconProps & React.HTMLAttributes<HTMLDivElement>
 > = ({ icon, tooltip, onClick, className = "" }) => {
     const svgMap = {
-        Map: <Map className={iconClass} />,
+        Row: <Rows3 className={iconClass} />,
         Home: <House className={iconClass} />,
         View: <Box className={iconClass} />,
         Water: <Droplet className={iconClass} />,
@@ -31,7 +31,7 @@ const ButtonIcon: React.FC<
                 {svgMap[icon]}
                 {tooltip != null && (
                     <div
-                        className={`absolute bg-[#3D3D3D] opacity-0 group-hover:opacity-100 pointer-events-none duration-300 min-w-[100px] leading-6 text-sm tracking-wide text-nowrap rounded-[2px] top-1/2 -translate-y-1/2 text-white ${
+                        className={`absolute bg-[#3D3D3D] opacity-0 group-hover:opacity-100 pointer-events-none duration-300 px-3 leading-6 text-sm tracking-wide text-nowrap rounded-[2px] top-1/2 -translate-y-1/2 text-white ${
                             tooltip.position == "left" ? "left-14" : "right-14"
                         }`}
                     >

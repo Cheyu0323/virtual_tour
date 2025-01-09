@@ -21,7 +21,7 @@ const Scene = () => {
                     fov: 70,
                     near: 0.1,
                     far: 1000,
-                    position: [20, 10, 0],
+                    position: [120, 40, 0],
                 }}
                 id="scene"
                 className="opacity-0"
@@ -35,7 +35,8 @@ const Scene = () => {
                 <Model />
                 <EffectComposerContainer />
                 <OrbitControl />
-                <Environment preset="sunset" environmentIntensity={0.7} />
+
+                <Environment preset="sunset" environmentIntensity={0.5} />
             </Canvas>
         </>
     );

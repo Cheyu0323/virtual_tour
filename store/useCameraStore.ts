@@ -18,8 +18,8 @@ type CameraStoreType = {
 const useCameraStore = create<CameraStoreType>((set) => ({
     camera: null,
     // orbit: null,
-    orbitTarget: { x: 0, y: 0, z: 0 },
-    cameraPosition: { x: 20, y: 10, z: 0 },
+    orbitTarget: { x: 0, y: 20, z: 0 },
+    cameraPosition: { x: 120, y: 40, z: 0 },
     isPanoramic: false,
     // handleInitCamera: (camera: THREE.Camera) =>
     //     set((state) => {
