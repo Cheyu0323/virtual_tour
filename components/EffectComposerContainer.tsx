@@ -1,5 +1,5 @@
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import React, { Suspense, useRef } from "react";
+// import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import React, { useRef } from "react";
 import * as THREE from "three";
 
 const EffectComposerContainer = () => {
@@ -16,24 +16,24 @@ const EffectComposerContainer = () => {
                     emissive="orange"
                 />
             </mesh> */}
-            <Suspense fallback={null}>
+            {/* <Suspense fallback={null}>
                 <EffectComposer autoClear={false}>
-                    {/* <Outline
+                    <Outline
                         selection={meshRef}
                         selectionLayer={100}
                         edgeStrength={100}
                         pulseSpeed={0}
                         kernelSize={100}
                         blur={false}
-                    /> */}
-                    {/* <Bloom
+                    />
+                    <Bloom
                         intensity={1}
                         luminanceThreshold={0.8}
                         luminanceSmoothing={0.5}
                         mipmapBlur={false}
-                    /> */}
+                    />
                 </EffectComposer>
-            </Suspense>
+            </Suspense> */}
         </>
     );
 };
