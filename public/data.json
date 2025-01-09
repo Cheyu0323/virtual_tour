@@ -32,48 +32,35 @@
             },
             {
                 "place": "廚房",
-                "pipeline": [
-                    "1F_Light_Wire_Kitchen"
-                ]
+                "pipeline": ["1F_Light_Wire_Kitchen"]
             },
             {
                 "place": "廁所",
-                "pipeline": [
-                    "1F_Light_Wire_Toilet"
-                ]
+                "pipeline": ["1F_Light_Wire_Toilet"]
             },
             {
                 "place": "走道",
-                "pipeline": [
-                    "1F_Light_Wire_Restroom",
-                    "1F_Light_Wire_Stairs"
-                ]
+                "pipeline": ["1F_Light_Wire_Restroom", "1F_Light_Wire_Stairs"]
             }
-        ]
+        ],
+        "cold_tube": ["1F_Cold"],
+        "hot_tube": ["1F_Hot"],
+        "drain_tube": ["1F_Drain"]
     },
     {
         "floor": "2F",
         "electricity": [
             {
                 "place": "房間1",
-                "pipeline": [
-                    "2F_Light_Wire_Room1",
-                    "2F_Light_Wire_Room1_Main"
-                ]
+                "pipeline": ["2F_Light_Wire_Room1", "2F_Light_Wire_Room1_Main"]
             },
             {
                 "place": "房間2",
-                "pipeline": [
-                    "2F_Light_Wire_Room2",
-                    "2F_Light_Wire_Room2_Main"
-                ]
+                "pipeline": ["2F_Light_Wire_Room2", "2F_Light_Wire_Room2_Main"]
             },
             {
                 "place": "房間3",
-                "pipeline": [
-                    "2F_Light_Wire_Room3",
-                    "2F_Light_Wire_Room3_Main"
-                ]
+                "pipeline": ["2F_Light_Wire_Room3", "2F_Light_Wire_Room3_Main"]
             },
             {
                 "place": "房間4",
@@ -106,22 +93,21 @@
                     "2F_Light_Wire_LivingRoom_Main"
                 ]
             }
-        ]
+        ],
+        "cold_tube": ["2F_Cold"],
+        "hot_tube": ["2F_Hot"],
+        "drain_tube": ["2F_Drain", "2F_Drain_D"]
     },
     {
         "floor": "3F",
         "electricity": [
             {
                 "place": "陽台",
-                "pipeline": [
-                    "3F_Light_Wire_Balcony"
-                ]
+                "pipeline": ["3F_Light_Wire_Balcony"]
             },
             {
                 "place": "廚房",
-                "pipeline": [
-                    "3F_Light_Wire_Kitchen"
-                ]
+                "pipeline": ["3F_Light_Wire_Kitchen"]
             },
             {
                 "place": "房間",
@@ -141,10 +127,11 @@
             },
             {
                 "place": "廁所",
-                "pipeline": [
-                    "3F_Light_Wire_Toilet"
-                ]
+                "pipeline": ["3F_Light_Wire_Toilet"]
             }
-        ]
+        ],
+        "cold_tube": ["3F_Cold"],
+        "hot_tube": ["3F_Hot"],
+        "drain_tube": ["3F_Drain", "3F_Drain_D"]
     }
 ]

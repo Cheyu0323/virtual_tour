@@ -42,8 +42,9 @@ const Scene = () => {
                     onClick={() => {
                         console.log("_");
                     }}
-                />
-                <RoomAreaHotSpot
+                /> */}
+
+                {/* <RoomAreaHotSpot
                     floor="2F"
                     position={[-3, 40, -14]}
                     title="廁所"

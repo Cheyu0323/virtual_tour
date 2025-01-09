@@ -65,13 +65,8 @@ const Home = () => {
                     />
                 </div>
                 <FloorList />
-                <FloorInfoPanel />
                 <div>
-                    <ButtonIcon
-                        icon="Row"
-                        tooltip={{ txt: "資訊", position: "right" }}
-                        className="bg-white hover:border-gray-300"
-                    />
+                    <FloorInfoPanel />
                 </div>
             </div>
         </div>
