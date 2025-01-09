@@ -1,7 +1,6 @@
 import useLightStore from "@/store/useLightStore";
 import { EffectComposer, Outline } from "@react-three/postprocessing";
 import React, { Suspense, useRef } from "react";
-import { BlendFunction, Resizer, KernelSize } from "postprocessing";
 import * as THREE from "three";
 
 const EffectComposerContainer = () => {
