@@ -53,10 +53,10 @@ const Home = () => {
                 <Progress />
             </div>
             <div
-                className="absolute z-50 bottom-5 left-1/2 -translate-x-1/2 w-11/12 h-16 flex items-center justify-between opacity-0"
                 id="controlBar"
+                className="absolute z-50 bottom-5 left-1/2 -translate-x-1/2 w-11/12 h-16 flex items-center justify-between opacity-0 pointer-events-none"
             >
-                <div>
+                <div className="pointer-events-auto">
                     <ButtonIcon
                         icon="View"
                         tooltip={{ txt: "透視", position: "left" }}

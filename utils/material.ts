@@ -25,4 +25,28 @@ const updateMaterialOpacity = ({
     node.material = oriMaterial;
 };
 
-export { updateMaterialOpacity };
+const updateMaterialDepthTest = ({ node }: { node: THREE.Mesh }) => {
+    const oriMaterial = (node.material as THREE.MeshStandardMaterial).clone();
+    oriMaterial.transparent = true;
+    oriMaterial.opacity = 1;
+    oriMaterial.depthTest = false;
+    node.material = oriMaterial;
+};
+
+const updateMaterialEmissiveIntensity = ({
+    node,
+    display,
+}: {
+    node: THREE.Mesh;
+    display: boolean;
+}) => {
+    const oriMaterial = (node.material as THREE.MeshStandardMaterial).clone();
+    oriMaterial.emissiveIntensity = display ? 1 : 0;
+    node.material = oriMaterial;
+};
+
+export {
+    updateMaterialOpacity,
+    updateMaterialDepthTest,
+    updateMaterialEmissiveIntensity,
+};

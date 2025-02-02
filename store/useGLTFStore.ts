@@ -9,6 +9,15 @@ export type GLTFResultType = GLTF & {
     materials: {
         ["default"]: THREE.MeshStandardMaterial;
         ["Class_Material"]: THREE.MeshPhysicalMaterial;
+        ["Wall_Material"]: THREE.MeshStandardMaterial;
+        ["AreaBox_1_Material"]: THREE.MeshStandardMaterial;
+        ["AreaBox_2_Material"]: THREE.MeshStandardMaterial;
+        ["AreaBox_3_Material"]: THREE.MeshStandardMaterial;
+        ["AreaBox_4_Material"]: THREE.MeshStandardMaterial;
+        ["AreaBox_5_Material"]: THREE.MeshStandardMaterial;
+        ["AreaBox_6_Material"]: THREE.MeshStandardMaterial;
+        ["AreaBox_7_Material"]: THREE.MeshStandardMaterial;
+        ["Light_Socket_Material"]: THREE.MeshStandardMaterial;
     };
 };
 type GLTFStoreType = {

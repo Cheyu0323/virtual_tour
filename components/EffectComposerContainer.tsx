@@ -1,13 +1,12 @@
-import useLightStore from "@/store/useLightStore";
-import { EffectComposer, Outline } from "@react-three/postprocessing";
-import React, { Suspense, useRef } from "react";
-import * as THREE from "three";
+import useHightLightStore from "@/store/useHightLightStore";
+import { Bloom, EffectComposer, Outline } from "@react-three/postprocessing";
+import React, { Suspense } from "react";
 
 const EffectComposerContainer = () => {
-    const meshRef = useRef<THREE.Mesh>(new THREE.Mesh());
-    const highlightList = useLightStore().highlightList;
+    // const meshRef = useRef<THREE.Mesh>(new THREE.Mesh());
+    const highlightList = useHightLightStore().highlightList;
 
-    console.log("meshRef", meshRef);
+    // console.log("meshRef", meshRef);
     return (
         <>
             <Suspense fallback={null}>
@@ -22,12 +21,12 @@ const EffectComposerContainer = () => {
                         blur={false}
                     />
 
-                    {/* <Bloom
+                    <Bloom
                         intensity={1}
                         luminanceThreshold={0.8}
                         luminanceSmoothing={0.5}
                         mipmapBlur={false}
-                    /> */}
+                    />
                 </EffectComposer>
             </Suspense>
         </>

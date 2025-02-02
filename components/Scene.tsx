@@ -6,6 +6,7 @@ import * as THREE from "three";
 import Model from "./Model";
 import EffectComposerContainer from "./EffectComposerContainer";
 import OrbitControl from "./OrbitControl";
+import MoveHotspot from "./MoveHotspot";
 
 const Scene = () => {
     return (
@@ -27,14 +28,17 @@ const Scene = () => {
                 className="opacity-0"
                 onCreated={(gl) => {
                     console.log("gl", gl);
+                    gl.setEvents({ filter: (intersections) => intersections.filter(i => i.object.visible) })
                     // gl.gl.sortObjects=false
                     // initCamera(gl.camera);
                 }}
+            
             >
                 <Stats />
                 <Model />
                 <EffectComposerContainer />
                 <OrbitControl />
+                <MoveHotspot />
                 {/* <RoomAreaHotSpot
                     floor="1F"
                     position={[20, 35, -10]}

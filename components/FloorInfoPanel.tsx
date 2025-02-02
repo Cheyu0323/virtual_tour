@@ -1,4 +1,4 @@
-import useLightStore from "@/store/useLightStore";
+import useHightLightStore from "@/store/useHightLightStore";
 import { Zap, Droplets, Droplet, LampCeiling, Minus } from "lucide-react";
 import React, { useState } from "react";
 import modalInfo from "@/public/data.json";
@@ -6,8 +6,8 @@ import useSceneStore from "@/store/useSceneStore";
 import ButtonIcon from "./ButtonIcon";
 
 const LightbulbIcon: React.FC<{ wireMesh: string }> = ({ wireMesh }) => {
-    const highlightList = useLightStore().highlightList;
-    const toggleHightLight = useLightStore().handleToggleHightLight;
+    const highlightList = useHightLightStore().highlightList;
+    const toggleHightLight = useHightLightStore().handleToggleHightLight;
     const handleClickIcon = () => {
         toggleHightLight(wireMesh);
     };
@@ -32,8 +32,8 @@ const WaterIcon: React.FC<{ tube: string; type: "cold" | "hot" | "drain" }> = ({
     tube,
     type,
 }) => {
-    const highlightList = useLightStore().highlightList;
-    const toggleHightLight = useLightStore().handleToggleHightLight;
+    const highlightList = useHightLightStore().highlightList;
+    const toggleHightLight = useHightLightStore().handleToggleHightLight;
     const handleClickIcon = () => {
         toggleHightLight(tube);
     };
@@ -79,11 +79,11 @@ const FloorInfoPanel = () => {
             <ButtonIcon
                 icon="Row"
                 tooltip={{ txt: "資訊", position: "right" }}
-                className="bg-white hover:border-gray-300"
+                className="bg-white hover:border-gray-300 pointer-events-auto"
                 onClick={handleToggle}
             />
             {isVisible && (
-                <div className="absolute right-0 bottom-1 bg-white p-3 w-full md:w-60 rounded flex flex-col text-black max-h-[calc(100svh_-_3rem)] overflow-x-hidden overflow-y-auto">
+                <div className="absolute right-0 bottom-1 bg-white p-3 w-full md:w-60 rounded flex flex-col text-black max-h-[calc(100svh_-_3rem)] overflow-x-hidden overflow-y-auto pointer-events-auto">
                     <div className="text-lg pb-1 border-b border-gray-300">
                         {currentFloor}
                         <div

@@ -2,34 +2,40 @@ import React from "react";
 import ButtonIcon from "./ButtonIcon";
 import useSceneStore, { FloorType } from "@/store/useSceneStore";
 import useCameraStore from "@/store/useCameraStore";
-import useLightStore from "@/store/useLightStore";
+import useHightLightStore from "@/store/useHightLightStore";
+import useLightBulbStore from "@/store/useLightBulbStore";
 
 const FloorList = () => {
     const updateCameraPosition = useCameraStore().handleUpdateCameraPosition;
     const updateOrbitTarget = useCameraStore().handleUpdateOrbitTarget;
+    const togglePanoramic = useCameraStore().handletogglePanoramic;
     const { currentFloor, handleSwitchFloor } = useSceneStore();
-    const restHighlightList = useLightStore().handleRestList;
+    const restHighlightList = useHightLightStore().handleRestList;
+    const restLightBulbList = useLightBulbStore().handleRestList;
 
     const handleClickHome = () => {
         updateCameraPosition({ x: 120, y: 40, z: 0 });
         updateOrbitTarget({ x: 0, y: 20, z: 0 });
         handleSwitchFloor("Sky");
         restHighlightList();
+        restLightBulbList();
+        togglePanoramic(false);
     };
     const handleClickFloor = (floor: FloorType) => {
         handleSwitchFloor(floor);
+        togglePanoramic(false);
         switch (floor) {
             case "1F":
                 updateCameraPosition({ x: 0.5, y: 100, z: 0 });
-                updateOrbitTarget({ x: 0, y: 0, z: 0 });
+                updateOrbitTarget({ x: -6, y: 0, z: 0 });
                 break;
             case "2F":
                 updateCameraPosition({ x: 0.5, y: 120, z: 0 });
-                updateOrbitTarget({ x: 0, y: 20, z: 0 });
+                updateOrbitTarget({ x: -6, y: 20, z: 0 });
                 break;
             case "3F":
                 updateCameraPosition({ x: 0.5, y: 130, z: 0 });
-                updateOrbitTarget({ x: 0, y: 40, z: 0 });
+                updateOrbitTarget({ x: -6, y: 40, z: 0 });
                 break;
             default:
                 break;
@@ -37,7 +43,7 @@ const FloorList = () => {
     };
 
     return (
-        <div className="border border-white/70 bg-transparent p-2 rounded flex gap-x-3 relative">
+        <div className="border border-white/70 bg-transparent p-2 rounded flex gap-x-3 relative pointer-events-auto">
             <ButtonIcon
                 icon="Home"
                 className="bg-[#D9D9D9]/40 hover:bg-[#D9D9D9]/70"

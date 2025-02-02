@@ -1,0 +1,258 @@
+[
+    {
+        "wire": "1F_Light_Wire_Entrance",
+        "bulb": [
+            "1F_Recessed_Light_Entrance",
+            "1F_Recessed_Light_Entrance001",
+            "1F_Recessed_Light_Entrance002"
+        ]
+    },
+    {
+        "wire": "1F_Light_Wire_Entrance_Outdoor",
+        "bulb": []
+    },
+    {
+        "wire": "1F_Light_Wire_LivingRoom_Main",
+        "bulb": [
+            "1F_Main_Light_LivingRoom",
+            "1F_Main_Light_LivingRoom001",
+            "1F_Main_Light_LivingRoom002",
+            "1F_Main_Light_LivingRoom003"
+        ]
+    },
+    {
+        "wire": "1F_Light_Wire_LivingRoom",
+        "bulb": [
+            "1F_Recessed_Light_LivingRoom",
+            "1F_Recessed_Light_LivingRoom001",
+            "1F_Recessed_Light_LivingRoom002",
+            "1F_Recessed_Light_LivingRoom003"
+        ]
+    },
+    {
+        "wire": "1F_Light_Wire_FrontRoom",
+        "bulb": [
+            "1F_Recessed_Light_FrontRoom",
+            "1F_Recessed_Light_FrontRoom001",
+            "1F_Recessed_Light_FrontRoom002",
+            "1F_Recessed_Light_FrontRoom003"
+        ]
+    },
+    {
+        "wire": "1F_Light_Wire_FrontRoom_Main",
+        "bulb": ["1F_Main_Light_FrontRoom", "1F_Main_Light_FrontRoom001"]
+    },
+    {
+        "wire": "1F_Light_Wire_DiningRoom",
+        "bulb": [
+            "1F_Recessed_Light_DiningRoom",
+            "1F_Recessed_Light_DiningRoom001",
+            "1F_Recessed_Light_DiningRoom002",
+            "1F_Recessed_Light_DiningRoom003"
+        ]
+    },
+    {
+        "wire": "1F_Light_Wire_DiningRoom_Main",
+        "bulb": ["1F_Main_Light_DiningRoom", "1F_Main_Light_DiningRoom001"]
+    },
+    {
+        "wire": "1F_Light_Wire_Kitchen",
+        "bulb": ["1F_Recessed_Light_Kitchen", "1F_Recessed_Light_Kitchen001"]
+    },
+    {
+        "wire": "1F_Light_Wire_Toilet",
+        "bulb": ["1F_Main_Light_Restroom", "1F_Main_Light_Restroom001"]
+    },
+    {
+        "wire": "1F_Light_Wire_Restroom",
+        "bulb": ["1F_Recessed_Light_Aisle005", "1F_Recessed_Light_Aisle006"]
+    },
+    {
+        "wire": "1F_Light_Wire_Stairs",
+        "bulb": [
+            "1F_Recessed_Light_Aisle",
+            "1F_Recessed_Light_Aisle001",
+            "1F_Recessed_Light_Aisle002",
+            "1F_Recessed_Light_Aisle003",
+            "1F_Recessed_Light_Aisle004"
+        ]
+    },
+    {
+        "wire": "2F_Light_Wire_Room1",
+        "bulb": [
+            "2F_Recessed_Light_Room1001",
+            "2F_Recessed_Light_Room1002",
+            "2F_Recessed_Light_Room1003",
+            "2F_Recessed_Light_Room1004",
+            "2F_Recessed_Light_Room1005",
+            "2F_Recessed_Light_Room1006"
+        ]
+    },
+    {
+        "wire": "2F_Light_Wire_Room1_Main",
+        "bulb": ["2F_Main_Light_Room1", "2F_Main_Light_Room1001"]
+    },
+    {
+        "wire": "2F_Light_Wire_Room2",
+        "bulb": [
+            "2F_Recessed_Light_Room2001",
+            "2F_Recessed_Light_Room2002",
+            "2F_Recessed_Light_Room2003",
+            "2F_Recessed_Light_Room2004"
+        ]
+    },
+    {
+        "wire": "2F_Light_Wire_Room2_Main",
+        "bulb": ["2F_Main_Light_Room2", "2F_Main_Light_Room2001"]
+    },
+    {
+        "wire": "2F_Light_Wire_Room3",
+        "bulb": [
+            "2F_Recessed_Light_Room3",
+            "2F_Recessed_Light_Room3001",
+            "2F_Recessed_Light_Room3002",
+            "2F_Recessed_Light_Room3003"
+        ]
+    },
+    {
+        "wire": "2F_Light_Wire_Room3_Main",
+        "bulb": ["2F_Main_Light_Room3", "2F_Main_Light_Room3001"]
+    },
+    {
+        "wire": "2F_Light_Wire_Room4",
+        "bulb": [
+            "2F_Recessed_Light_Room4",
+            "2F_Recessed_Light_Room4001",
+            "2F_Recessed_Light_Room4002",
+            "2F_Recessed_Light_Room4003",
+            "2F_Recessed_Light_Room4004",
+            "2F_Recessed_Light_Room4005"
+        ]
+    },
+    {
+        "wire": "2F_Light_Wire_Room4_Main",
+        "bulb": ["2F_Main_Light_Room4", "2F_Main_Light_Room4001"]
+    },
+    {
+        "wire": "2F_Light_Wire_Room4_Toilet",
+        "bulb": ["2F_Light_Bulb_Room4_Toilet", "2F_Light_Bulb_Room4_Toilet001"]
+    },
+    {
+        "wire": "2F_Light_Wire_Room5",
+        "bulb": [
+            "2F_Recessed_Light_Room5",
+            "2F_Recessed_Light_Room5001",
+            "2F_Recessed_Light_Room5002",
+            "2F_Recessed_Light_Room5003",
+            "2F_Recessed_Light_Room5004",
+            "2F_Recessed_Light_Room5005"
+        ]
+    },
+    {
+        "wire": "2F_Light_Wire_Room5_Main",
+        "bulb": ["2F_Main_Light_Room5", "2F_Main_Light_Room5001"]
+    },
+    {
+        "wire": "2F_Light_Wire_Room5_Toilet",
+        "bulb": ["2F_Light_Bulb_Room5_Toilet"]
+    },
+    {
+        "wire": "2F_Light_Wire_Stairs",
+        "bulb": ["2F_Light_Bulb_Stairs", "2F_Light_Bulb_Stairs.001"]
+    },
+    {
+        "wire": "2F_Light_Wire_Stairs001",
+        "bulb": [
+            "2F_Light_Bulb_LivingRoom007",
+            "2F_Light_Bulb_LivingRoom008",
+            "2F_Light_Bulb_LivingRoom009"
+        ]
+    },
+    {
+        "wire": "2F_Light_Wire_Stairs002",
+        "bulb": ["2F_Main_Light_Stairs"]
+    },
+    {
+        "wire": "2F_Light_Wire_LivingRoom",
+        "bulb": [
+            "2F_Light_Bulb_LivingRoom001",
+            "2F_Light_Bulb_LivingRoom002",
+            "2F_Light_Bulb_LivingRoom003",
+            "2F_Light_Bulb_LivingRoom004",
+            "2F_Light_Bulb_LivingRoom005",
+            "2F_Light_Bulb_LivingRoom006"
+        ]
+    },
+    {
+        "wire": "2F_Light_Wire_LivingRoom_Main",
+        "bulb": [
+            "2F_Main_Light_LivingRoom",
+            "2F_Main_Light_LivingRoom001",
+            "2F_Main_Light_LivingRoom002",
+            "2F_Main_Light_LivingRoom003"
+        ]
+    },
+    {
+        "wire": "3F_Light_Wire_Balcony",
+        "bulb": [
+            "3F_Recessed_Light_Balcony",
+            "3F_Recessed_Light_Balcony001",
+            "3F_Recessed_Light_Balcony002",
+            "3F_Recessed_Light_Balcony003",
+            "3F_Recessed_Light_Balcony004"
+        ]
+    },
+    {
+        "wire": "3F_Light_Wire_Kitchen",
+        "bulb": [
+            "3F_Recessed_Light_Kicken",
+            "3F_Recessed_Light_Kicken001",
+            "3F_Recessed_Light_Kicken002"
+        ]
+    },
+    {
+        "wire": "3F_Light_Wire_Room",
+        "bulb": [
+            "3F_Recessed_Light_Room",
+            "3F_Recessed_Light_Room001",
+            "3F_Recessed_Light_Room003",
+            "3F_Recessed_Light_Room004"
+        ]
+    },
+    {
+        "wire": "3F_Light_Wire_Room_Left",
+        "bulb": [
+            "3F_Recessed_Light_Room009",
+            "3F_Recessed_Light_Room010",
+            "3F_Recessed_Light_Room011"
+        ]
+    },
+    {
+        "wire": "3F_Light_Wire_Room_Main",
+        "bulb": ["3F_Main_Light_Room", "3F_Main_Light_Room001"]
+    },
+    {
+        "wire": "3F_Light_Wire_Room_Right",
+        "bulb": [
+            "3F_Recessed_Light_Room006",
+            "3F_Recessed_Light_Room007",
+            "3F_Recessed_Light_Room008"
+        ]
+    },
+    {
+        "wire": "3F_Light_Wire_Stairs",
+        "bulb": [
+            "3F_Recessed_Light_Stairs",
+            "3F_Recessed_Light_Stairs001",
+            "3F_Recessed_Light_Stairs002"
+        ]
+    },
+    {
+        "wire": "3F_Light_Wire_Stairs_Main",
+        "bulb": ["3F_Main_Light_Stairs", "3F_Main_Light_Stairs001"]
+    },
+    {
+        "wire": "3F_Light_Wire_Toilet",
+        "bulb": ["3F_Recessed_Light_Toilet", "3F_Recessed_Light_Toilet001"]
+    }
+]

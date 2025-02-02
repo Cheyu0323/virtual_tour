@@ -5,6 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import React, { useEffect, useRef } from "react";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import gsap from "gsap";
+import * as THREE from "three";
 
 const OrbitControl = () => {
     const controls = useRef<OrbitControlsImpl>(null);
@@ -12,7 +13,6 @@ const OrbitControl = () => {
     // const initOrbitControl = useCameraStore(
     //     (state) => state.handleInitOrbitControl
     // );
-    // const isPanoramic = useCameraStore((state) => state.isPanoramic);
 
     // useEffect(() => {
     //     if (controls.current == null) return;
@@ -30,9 +30,16 @@ const OrbitControl = () => {
     const { camera } = useThree();
     const cameraPosition = useCameraStore().cameraPosition;
     const orbitTarget = useCameraStore().orbitTarget;
+    const isPanoramic = useCameraStore((state) => state.isPanoramic);
 
     const updateCameraOrbit = () => {
         if (controls.current == null) return;
+        if (isPanoramic) {
+            const forward = new THREE.Vector3();
+            camera.getWorldDirection(forward);
+            controls.current.target.copy(camera.position).add(forward);
+            return;
+        }
         controls.current.target.set(
             orbitTarget.x,
             orbitTarget.y,
@@ -47,8 +54,7 @@ const OrbitControl = () => {
 
     useEffect(() => {
         if (controls.current == null) return;
-        updateCameraOrbit();
-        console.log("-cameraPosition", cameraPosition);
+        // updateCameraOrbit();
         const tl = gsap.to(camera.position, {
             x: cameraPosition.x,
             y: cameraPosition.y,
@@ -74,7 +80,6 @@ const OrbitControl = () => {
             ref={controls}
             enablePan={false}
             dampingFactor={0.5}
-            target={[0, 0, 0]}
             onEnd={() => updateCameraOrbit()}
         />
     );
