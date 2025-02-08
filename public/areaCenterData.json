@@ -1,0 +1,35 @@
+[
+    {
+        "floor": "1F_AreaBox_LivingRoom",
+        "position": { "x": 13, "z": -15 }
+    },
+    {
+        "floor": "1F_AreaBox_Entrance",
+        "position": { "x": 27, "z": 0 }
+    },
+    {
+        "floor": "1F_AreaBox_FrontRoom",
+        "position": { "x": 13, "z": 16 }
+    },
+    {
+        "floor": "1F_AreaBox_DiningRoom",
+        "position": { "x": -5, "z": 16 }
+    },
+    {
+        "floor": "1F_AreaBox_Kicken",
+        "position": { "x": -20, "z": 16 }
+    },
+    { "floor": "1F_AreaBox_RestRoom", "position": { "x": -20, "z": -16 } },
+    { "floor": "1F_AreaBox_Stairs", "position": { "x": -4, "z": 0 } },
+    { "floor": "2F_AreaBox_Room1", "position": { "x": 20, "z": -13 } },
+    { "floor": "2F_AreaBox_Room2", "position": { "x": 15, "z": 16 } },
+    { "floor": "2F_AreaBox_Room3", "position": { "x": -9, "z": 16 } },
+    { "floor": "2F_AreaBox_LivingRoom", "position": { "x": -2, "z": 15 } },
+    { "floor": "2F_AreaBox_Stairs", "position": { "x": -20, "z": -3 } },
+    { "floor": "2F_AreaBox_Room5", "position": { "x": -50, "z": 16 } },
+    { "floor": "2F_AreaBox_Room4", "position": { "x": -50, "z": -13 } },
+    { "floor": "3F_AreaBox_Room", "position": { "x": -40, "z": -13 } },
+    { "floor": "3F_AreaBox_Kitchen", "position": { "x": -45, "z": 6 } },
+    { "floor": "3F_AreaBox_Toilet", "position": { "x": -56, "z": 17 } },
+    { "floor": "3F_AreaBox_Stairs", "position": { "x": -40, "z": 15 } }
+]

@@ -15,6 +15,7 @@ const Home = () => {
     const container = useRef<HTMLDivElement>(null);
     const { progress } = useProgress();
     const togglePerspective = useSceneStore().handleTogglePerspective;
+    const isPerspective = useSceneStore().isPerspective;
 
     useGSAP(
         () => {
@@ -60,7 +61,11 @@ const Home = () => {
                     <ButtonIcon
                         icon="View"
                         tooltip={{ txt: "透視", position: "left" }}
-                        className="bg-white hover:border-gray-300"
+                        className={`${
+                            isPerspective
+                                ? "bg-[#3D3D3D] [&>*]:text-white"
+                                : "bg-white"
+                        }`}
                         onClick={handleClickPerspective}
                     />
                 </div>

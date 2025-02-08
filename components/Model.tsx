@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ThreeEvent, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import useSceneStore from "@/store/useSceneStore";
@@ -7,6 +7,8 @@ import { updateMaterialOpacity } from "@/utils/material";
 import * as THREE from "three";
 import useGLTFStore, { GLTFResultType } from "@/store/useGLTFStore";
 import useCameraStore from "@/store/useCameraStore";
+import { hiddenAllChildMesh } from "@/utils/model";
+import enterPosition from "@/public/areaCenterData.json";
 
 const handlePerspectiveModel = ({
     meshs,
@@ -34,36 +36,41 @@ const Model: React.FC = () => {
     const togglePanoramic = useCameraStore(
         (state) => state.handletogglePanoramic
     );
+    const [canMove, setCanMove] = useState<boolean>(true);
 
     useEffect(() => {
         saveGLTF(gltf);
     }, [saveGLTF, gltf]);
 
-    // 玻璃反射
-    const classMaterial = gltf.materials[
-        "Class_Material"
-    ] as THREE.MeshPhysicalMaterial;
-    classMaterial.transparent = true;
-    classMaterial.roughness = 0;
-    classMaterial.metalness = 1;
-    classMaterial.opacity = 0.6;
-    classMaterial.reflectivity = 1;
+    useEffect(() => {
+        // 玻璃反射
+        const classMaterial = gltf.materials[
+            "Class_Material"
+        ] as THREE.MeshPhysicalMaterial;
+        classMaterial.transparent = true;
+        classMaterial.roughness = 0;
+        classMaterial.metalness = 1;
+        classMaterial.opacity = 0.6;
+        classMaterial.reflectivity = 1;
 
-    const lightBulbMaterial = gltf.materials["Light_Socket_Material"];
-    lightBulbMaterial.emissiveIntensity = 0;
+        const lightBulbMaterial = gltf.materials["Light_Socket_Material"];
+        lightBulbMaterial.emissiveIntensity = 0;
 
-    Object.entries(gltf.nodes)
-        .filter(([key]) => key.includes("AreaBox") || key.includes("Text"))
-        .map(([, value]) => {
-            value.visible = false;
-            updateMaterialOpacity({
-                node: value,
-                display: false,
+        Object.entries(gltf.nodes)
+            .filter(([key]) => key.includes("AreaBox") || key.includes("Text"))
+            .map(([, value]) => {
+                value.visible = false;
+                updateMaterialOpacity({
+                    node: value,
+                    display: false,
+                });
             });
-        });
+    }, [gltf.materials, gltf.nodes]);
 
+    // Perspective
     useEffect(() => {
         const nodes = gltf.nodes;
+        console.log("nodes", nodes);
 
         handlePerspectiveModel({
             meshs: [
@@ -80,6 +87,10 @@ const Model: React.FC = () => {
             ],
             isPerspective: !isPerspective,
         });
+    }, [gltf.nodes, isPerspective]);
+
+    // Floor
+    useEffect(() => {
         if (currentFloor != "Sky") {
             gltf.scene.children.map((mesh) => {
                 if (!mesh.name.includes(currentFloor)) {
@@ -92,6 +103,12 @@ const Model: React.FC = () => {
                     ) {
                         mesh.visible = false;
                     }
+                    if (mesh.name.includes("Door")) {
+                        hiddenAllChildMesh({
+                            node: mesh as THREE.Mesh,
+                            visible: !isPanoramic,
+                        });
+                    }
                 }
             });
             return;
@@ -102,20 +119,32 @@ const Model: React.FC = () => {
                     : (mesh.visible = true)
             );
         }
-    }, [currentFloor, isPerspective, gltf, isPanoramic]);
+    }, [currentFloor, gltf.scene.children, isPanoramic]);
 
     const handleClickModel = (e: ThreeEvent<MouseEvent>) => {
         const floorGap = 17;
         if (e.object.name.includes("AreaBox")) {
             togglePanoramic(true);
+            const findEnterPosition = enterPosition.find(
+                (item) => item.floor == e.object.name
+            );
+            if (findEnterPosition == null) {
+                updateCameraPosition({
+                    x: 0,
+                    y: 7 + floorGap * (parseInt(currentFloor) - 1),
+                    z: 0,
+                });
+                return;
+            }
             updateCameraPosition({
-                x: 0,
+                x: findEnterPosition.position.x,
                 y: 7 + floorGap * (parseInt(currentFloor) - 1),
-                z: 0,
+                z: findEnterPosition.position.z,
             });
         }
 
         if (!isPanoramic) return;
+        if (!canMove) return;
         if (!e.object.name.includes("Floor")) return;
         const intersections = e.intersections.every((item) =>
             item.object.name.includes("Floor")
@@ -148,6 +177,26 @@ const Model: React.FC = () => {
             });
         }
     };
+    const handlePointerDown = (e: ThreeEvent<MouseEvent>) => {
+        const intersections = e.intersections.every((item) =>
+            item.object.name.includes("Floor")
+        );
+        if (!intersections) {
+            setCanMove(false);
+            return;
+        }
+        setCanMove(true);
+    };
+    const onPointerUp = (e: ThreeEvent<MouseEvent>) => {
+        const intersections = e.intersections.every((item) =>
+            item.object.name.includes("Floor")
+        );
+        if (!intersections) {
+            setCanMove(false);
+            return;
+        }
+        setCanMove(true);
+    };
     gltf.scene.scale.setScalar(5);
 
     return (
@@ -157,6 +206,8 @@ const Model: React.FC = () => {
                 onClick={handleClickModel}
                 onPointerEnter={handlePointerEnter}
                 onPointerLeave={handlePointerLeave}
+                onPointerDown={handlePointerDown}
+                onPointerUp={onPointerUp}
             />
         </>
     );

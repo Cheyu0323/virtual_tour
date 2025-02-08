@@ -1,7 +1,7 @@
 import useHightLightStore from "@/store/useHightLightStore";
 import { Zap, Droplets, Droplet, LampCeiling, Minus } from "lucide-react";
 import React, { useState } from "react";
-import modalInfo from "@/public/data.json";
+import pipeline from "@/public/pipelineData.json";
 import useSceneStore from "@/store/useSceneStore";
 import ButtonIcon from "./ButtonIcon";
 
@@ -64,11 +64,11 @@ const FloorInfoPanel = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const currentFloor = useSceneStore().currentFloor;
 
-    const modalIndex = modalInfo.findIndex(
+    const modalIndex = pipeline.findIndex(
         (item) => item.floor == currentFloor
     );
     if (modalIndex == -1) return <></>;
-    const info = modalInfo[modalIndex];
+    const info = pipeline[modalIndex];
 
     const handleToggle = () => {
         setIsVisible(!isVisible);
