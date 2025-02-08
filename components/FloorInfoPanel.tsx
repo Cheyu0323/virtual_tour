@@ -8,8 +8,14 @@ import ButtonIcon from "./ButtonIcon";
 const LightbulbIcon: React.FC<{ wireMesh: string }> = ({ wireMesh }) => {
     const highlightList = useHightLightStore().highlightList;
     const toggleHightLight = useHightLightStore().handleToggleHightLight;
+    const { currentFloor } = useSceneStore();
     const handleClickIcon = () => {
         toggleHightLight(wireMesh);
+        window.gtag("event", `點擊燈泡_${wireMesh}`, {
+            category: "UI",
+            floor: currentFloor,
+            label: `點擊燈泡_${wireMesh}`,
+        });
     };
 
     const isHightLight = highlightList.find((item) => item.name == wireMesh);
@@ -34,8 +40,14 @@ const WaterIcon: React.FC<{ tube: string; type: "cold" | "hot" | "drain" }> = ({
 }) => {
     const highlightList = useHightLightStore().highlightList;
     const toggleHightLight = useHightLightStore().handleToggleHightLight;
+    const { currentFloor } = useSceneStore();
     const handleClickIcon = () => {
         toggleHightLight(tube);
+        window.gtag("event", `點擊管線_${tube}`, {
+            category: "UI",
+            floor: currentFloor,
+            label: `點擊管線_${tube}`,
+        });
     };
 
     const isHightLight = highlightList.find((item) => item.name == tube);
@@ -64,9 +76,7 @@ const FloorInfoPanel = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const currentFloor = useSceneStore().currentFloor;
 
-    const modalIndex = pipeline.findIndex(
-        (item) => item.floor == currentFloor
-    );
+    const modalIndex = pipeline.findIndex((item) => item.floor == currentFloor);
     if (modalIndex == -1) return <></>;
     const info = pipeline[modalIndex];
 

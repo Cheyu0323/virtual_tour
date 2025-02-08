@@ -20,10 +20,20 @@ const FloorList = () => {
         restHighlightList();
         restLightBulbList();
         togglePanoramic(false);
+        window.gtag("event", "點擊樓層_房子", {
+            category: "UI",
+            floor: "Sky",
+            label: "點擊樓層_房子",
+        });
     };
     const handleClickFloor = (floor: FloorType) => {
         handleSwitchFloor(floor);
         togglePanoramic(false);
+        window.gtag("event", `點擊樓層_${floor}`, {
+            category: "UI",
+            floor: floor,
+            label: `點擊樓層_${floor}`,
+        });
         switch (floor) {
             case "1F":
                 updateCameraPosition({ x: 0.5, y: 100, z: 0 });

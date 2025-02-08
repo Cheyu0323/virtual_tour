@@ -125,6 +125,11 @@ const Model: React.FC = () => {
         const floorGap = 17;
         if (e.object.name.includes("AreaBox")) {
             togglePanoramic(true);
+            window.gtag("event", `點擊模型進入區域_${e.object.name}`, {
+                category: "模型",
+                floor: currentFloor,
+                label: `點擊模型進入區域_${e.object.name}`,
+            });
             const findEnterPosition = enterPosition.find(
                 (item) => item.floor == e.object.name
             );
@@ -154,6 +159,11 @@ const Model: React.FC = () => {
             item.object.name.includes("Floor")
         );
         if (floorMesh == null || floorMesh.face == null) return;
+        window.gtag("event", `視角移動_${currentFloor}`, {
+            category: "模型",
+            floor: currentFloor,
+            label: `視角移動_${currentFloor}`,
+        });
         updateCameraPosition({
             x: floorMesh.point.x + floorMesh.face.normal.x,
             y: 7 + floorGap * (parseInt(currentFloor) - 1),

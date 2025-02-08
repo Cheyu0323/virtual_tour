@@ -9,6 +9,7 @@ import ButtonIcon from "@/components/ButtonIcon";
 import useSceneStore from "@/store/useSceneStore";
 import FloorList from "@/components/FloorList";
 import FloorInfoPanel from "@/components/FloorInfoPanel";
+import { GoogleAnalytics } from "@next/third-parties/google";
 gsap.registerPlugin(useGSAP);
 
 const Home = () => {
@@ -42,6 +43,10 @@ const Home = () => {
 
     const handleClickPerspective = () => {
         togglePerspective();
+        window.gtag("event", "點擊透視", {
+            category: "UI",
+            label: "點擊透視",
+        });
     };
 
     return (
@@ -50,6 +55,7 @@ const Home = () => {
             className="w-full h-svh bg-gradient-to-b from-[#CFC6C7] from-0% via-[#C0B2B4] via-70% to-[#B19EA2] to-100%  relative overflow-hidden"
         >
             <Scene />
+            <GoogleAnalytics gaId="G-CYM58TSPLC" />
             <div className="absolute bottom-5 right-5">
                 <Progress />
             </div>
