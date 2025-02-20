@@ -129,7 +129,7 @@ const FloorMap: React.FC = () => {
                 className={`absolute bottom-full right-0 w-60 p-3 bg-white rounded mb-2.5 md:mb-1 shadow-lg flex flex-col gap-y-3 duration-150 ${
                     isOpenMap
                         ? "opacity-100 pointer-events-auto"
-                        : "opacity-0 pointer-events-auto"
+                        : "opacity-0 pointer-events-none"
                 }`}
             >
                 <div className="flex gap-x-2.5 items-center tracking-wider pb-3 border-b border-gray-300">
@@ -193,7 +193,7 @@ const FloorMap: React.FC = () => {
                 <div className=" p-2 rounded relative w-full h-[310px]">
                     <div
                         className={`absolute top-0 left-0 w-full duration-300 ${
-                            floor == "1F"
+                            floor == "1F" && isOpenMap
                                 ? "opacity-100 pointer-events-auto"
                                 : "opacity-0 pointer-events-none"
                         }`}
@@ -301,7 +301,7 @@ const FloorMap: React.FC = () => {
                     </div>
                     <div
                         className={`absolute top-0 left-0 w-full h-full duration-300 ${
-                            floor == "2F"
+                            floor == "2F"&& isOpenMap
                                 ? "opacity-100 pointer-events-auto"
                                 : "opacity-0 pointer-events-none"
                         }`}
@@ -422,7 +422,7 @@ const FloorMap: React.FC = () => {
                     </div>
                     <div
                         className={`absolute top-0 left-0 w-full h-full duration-300 ${
-                            floor == "3F"
+                            floor == "3F"&& isOpenMap
                                 ? "opacity-100 pointer-events-auto"
                                 : "opacity-0 pointer-events-none"
                         }`}
