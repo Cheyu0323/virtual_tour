@@ -1,9 +1,19 @@
 import React from "react";
 
-import { House, Box, Droplet, Zap, Flame, Triangle, Rows3 } from "lucide-react";
+import {
+    House,
+    Box,
+    Droplet,
+    Zap,
+    Flame,
+    Triangle,
+    Rows3,
+    Map,
+    X,
+} from "lucide-react";
 
 type ButtonIconProps = {
-    icon: "Row" | "Home" | "View" | "Water" | "Zap" | "Flame";
+    icon: "Row" | "Home" | "View" | "Water" | "Zap" | "Flame" | "Map" | "X";
     tooltip?: { txt: string; position: "left" | "right" };
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 };
@@ -20,6 +30,8 @@ const ButtonIcon: React.FC<
         Water: <Droplet className={iconClass} />,
         Zap: <Zap className={iconClass} />,
         Flame: <Flame className={iconClass} />,
+        Map: <Map className={iconClass} />,
+        X: <X className={iconClass} />,
     };
 
     return (

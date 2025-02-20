@@ -8,8 +8,8 @@ import { useProgress } from "@react-three/drei";
 import ButtonIcon from "@/components/ButtonIcon";
 import useSceneStore from "@/store/useSceneStore";
 import FloorList from "@/components/FloorList";
-import FloorInfoPanel from "@/components/FloorInfoPanel";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import FloorMap from "@/components/FloorMap";
 gsap.registerPlugin(useGSAP);
 
 const Home = () => {
@@ -76,8 +76,8 @@ const Home = () => {
                     />
                 </div>
                 <FloorList />
-                <div>
-                    <FloorInfoPanel />
+                <div className="pointer-events-auto">
+                    <FloorMap />
                 </div>
             </div>
         </div>

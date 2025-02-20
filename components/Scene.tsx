@@ -1,6 +1,6 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
-import { Environment, Stats } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import React from "react";
 import * as THREE from "three";
 import Model from "./Model";
@@ -28,13 +28,15 @@ const Scene = () => {
                 className="opacity-0"
                 onCreated={(gl) => {
                     console.log("gl", gl);
-                    gl.setEvents({ filter: (intersections) => intersections.filter(i => i.object.visible) })
+                    gl.setEvents({
+                        filter: (intersections) =>
+                            intersections.filter((i) => i.object.visible),
+                    });
                     // gl.gl.sortObjects=false
                     // initCamera(gl.camera);
                 }}
-            
             >
-                <Stats />
+                {/* <Stats /> */}
                 <Model />
                 <EffectComposerContainer />
                 <OrbitControl />

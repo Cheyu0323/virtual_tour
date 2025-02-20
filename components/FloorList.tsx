@@ -9,14 +9,17 @@ const FloorList = () => {
     const updateCameraPosition = useCameraStore().handleUpdateCameraPosition;
     const updateOrbitTarget = useCameraStore().handleUpdateOrbitTarget;
     const togglePanoramic = useCameraStore().handletogglePanoramic;
-    const { currentFloor, handleSwitchFloor } = useSceneStore();
+    const { currentFloor, handleSwitchFloor, currentRoom, handleSwitchRoom } = useSceneStore();
     const restHighlightList = useHightLightStore().handleRestList;
     const restLightBulbList = useLightBulbStore().handleRestList;
+
+    console.log("-- currentRoom", currentRoom);
 
     const handleClickHome = () => {
         updateCameraPosition({ x: 120, y: 40, z: 0 });
         updateOrbitTarget({ x: 0, y: 20, z: 0 });
         handleSwitchFloor("Sky");
+        handleSwitchRoom(null)
         restHighlightList();
         restLightBulbList();
         togglePanoramic(false);

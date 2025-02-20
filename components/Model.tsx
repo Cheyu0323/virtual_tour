@@ -32,6 +32,7 @@ const Model: React.FC = () => {
     const saveGLTF = useGLTFStore((state) => state.handleSaveGLTF);
 
     const updateCameraPosition = useCameraStore().handleUpdateCameraPosition;
+    const switchRoom = useSceneStore().handleSwitchRoom;
     const isPanoramic = useCameraStore((state) => state.isPanoramic);
     const togglePanoramic = useCameraStore(
         (state) => state.handletogglePanoramic
@@ -44,6 +45,7 @@ const Model: React.FC = () => {
 
     useEffect(() => {
         // 玻璃反射
+        console.log("--gltf.materials", gltf.materials);
         const classMaterial = gltf.materials[
             "Class_Material"
         ] as THREE.MeshPhysicalMaterial;
@@ -52,6 +54,11 @@ const Model: React.FC = () => {
         classMaterial.metalness = 1;
         classMaterial.opacity = 0.6;
         classMaterial.reflectivity = 1;
+
+        // 隱藏地板區域
+        const floorBoxMaterial = gltf.materials["FloorBox_Material"];
+        floorBoxMaterial.transparent = true;
+        floorBoxMaterial.opacity = 0;
 
         const lightBulbMaterial = gltf.materials["Light_Socket_Material"];
         lightBulbMaterial.emissiveIntensity = 0;
@@ -97,32 +104,52 @@ const Model: React.FC = () => {
                     mesh.visible = false;
                 } else {
                     mesh.visible = true;
-                    if (
-                        mesh.name == `${currentFloor}_Ceiling` &&
-                        !isPanoramic
-                    ) {
-                        mesh.visible = false;
-                    }
                     if (mesh.name.includes("Door")) {
                         hiddenAllChildMesh({
                             node: mesh as THREE.Mesh,
                             visible: !isPanoramic,
                         });
                     }
+                    if (isPanoramic) {
+                        if (
+                            mesh.name.includes("AreaBox") ||
+                            mesh.name.includes("Text")
+                        ) {
+                            mesh.visible = false;
+                        }
+                    } else if (!isPanoramic) {
+                        if (mesh.name == `${currentFloor}_Ceiling`) {
+                            mesh.visible = false;
+                        }
+                        if (
+                            mesh.name.includes("AreaBox") ||
+                            mesh.name.includes("Text")
+                        ) {
+                            mesh.visible = true;
+                        }
+                    }
                 }
             });
             return;
         } else {
-            gltf.scene.children.map((mesh) =>
-                mesh.name.includes("AreaBox") || mesh.name.includes("Text")
+            gltf.scene.children.map((mesh) => {
+                if (mesh.name.includes("Door")) {
+                    hiddenAllChildMesh({
+                        node: mesh as THREE.Mesh,
+                        visible: !isPanoramic,
+                    });
+                }
+                return mesh.name.includes("AreaBox") ||
+                    mesh.name.includes("Text")
                     ? (mesh.visible = false)
-                    : (mesh.visible = true)
-            );
+                    : (mesh.visible = true);
+            });
         }
     }, [currentFloor, gltf.scene.children, isPanoramic]);
 
     const handleClickModel = (e: ThreeEvent<MouseEvent>) => {
         const floorGap = 17;
+        console.log("!! e.object.name", e.object.name);
         if (e.object.name.includes("AreaBox")) {
             togglePanoramic(true);
             window.gtag("event", `點擊模型進入區域_${e.object.name}`, {
@@ -141,6 +168,7 @@ const Model: React.FC = () => {
                 });
                 return;
             }
+            switchRoom(e.object.name.replace("AreaBox", "FloorBox"));
             updateCameraPosition({
                 x: findEnterPosition.position.x,
                 y: 7 + floorGap * (parseInt(currentFloor) - 1),
@@ -158,6 +186,9 @@ const Model: React.FC = () => {
         const floorMesh = e.intersections.find((item) =>
             item.object.name.includes("Floor")
         );
+        if (e.object.name.includes("FloorBox")) {
+            switchRoom(e.object.name);
+        }
         if (floorMesh == null || floorMesh.face == null) return;
         window.gtag("event", `視角移動_${currentFloor}`, {
             category: "模型",
