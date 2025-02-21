@@ -7,13 +7,15 @@ import { Droplet, LampCeiling, MapPin, X } from "lucide-react";
 import useSceneStore from "@/store/useSceneStore";
 import useHightLightStore from "@/store/useHightLightStore";
 import pipeline from "@/public/pipelineData.json";
+import enterPosition from "@/public/areaCenterData.json";
+import useCameraStore from "@/store/useCameraStore";
 
 const PinIcon: React.FC<
     { isRightHere: boolean } & React.HTMLAttributes<SVGAElement>
 > = ({ isRightHere = false, className = "" }) => {
     return (
         <MapPin
-            className={`absolute w-5 h-4 animate-bounce fill-white duration-150 ${
+            className={`absolute w-5 h-4 animate-bounce z-50 fill-white duration-150 pointer-events-none ${
                 isRightHere ? "opacity-100" : "opacity-0"
             } ${className}`}
         />
@@ -77,7 +79,7 @@ const LightbulbIcon: React.FC<
 
     return (
         <div
-            className={`bg-white rounded-full p-0.5 absolute cursor-pointer ${className} `}
+            className={`bg-white rounded-full p-0.5 z-50 absolute cursor-pointer ${className} `}
         >
             <LampCeiling
                 className={`w-3.5 h-3.5 m-auto ${
@@ -88,11 +90,16 @@ const LightbulbIcon: React.FC<
         </div>
     );
 };
-
+const floorGap = 17;
 const FloorMap: React.FC = () => {
     const [isOpenMap, setIsOpenMap] = useState<boolean>(true);
     const [floor, setFloor] = useState<"1F" | "2F" | "3F">("1F");
-    const { currentRoom, currentFloor } = useSceneStore();
+    const { currentRoom, currentFloor, handleSwitchFloor } = useSceneStore();
+    const updateCameraPosition = useCameraStore().handleUpdateCameraPosition;
+    const switchRoom = useSceneStore().handleSwitchRoom;
+    const togglePanoramic = useCameraStore(
+        (state) => state.handletogglePanoramic
+    );
 
     const handleToggleMap = () => {
         setIsOpenMap(!isOpenMap);
@@ -100,6 +107,33 @@ const FloorMap: React.FC = () => {
 
     const handleSwithFloor = (floor: "1F" | "2F" | "3F") => {
         setFloor(floor);
+    };
+
+    const handleEnterRoom = (room: string) => {
+        togglePanoramic(true);
+        handleSwitchFloor(floor);
+        window.gtag("event", `點擊 FloorMap 進入區域_${room}`, {
+            category: "UI",
+            floor: floor,
+            label: `點擊 FloorMap 進入區域_${room}`,
+        });
+        const findEnterPosition = enterPosition.find(
+            (item) => item.floor == room
+        );
+        if (findEnterPosition == null) {
+            updateCameraPosition({
+                x: 0,
+                y: 7 + floorGap * (parseInt(floor) - 1),
+                z: 0,
+            });
+            return;
+        }
+        switchRoom(room.replace("AreaBox", "FloorBox"));
+        updateCameraPosition({
+            x: findEnterPosition.position.x,
+            y: 7 + floorGap * (parseInt(floor) - 1),
+            z: findEnterPosition.position.z,
+        });
     };
 
     useEffect(() => {
@@ -190,7 +224,7 @@ const FloorMap: React.FC = () => {
                         ))}
                     </div>
                 </div>
-                <div className=" p-2 rounded relative w-full h-[310px]">
+                <div className="p-2 rounded relative w-full h-[310px]">
                     <div
                         className={`absolute top-0 left-0 w-full duration-300 ${
                             floor == "1F" && isOpenMap
@@ -199,12 +233,93 @@ const FloorMap: React.FC = () => {
                         }`}
                     >
                         <Image
-                            src="/Floor1.png"
+                            src="/floormap/Floor1_1.png"
                             alt={"FloorMap_Floor1"}
                             width={0}
                             height={0}
                             sizes="100vw"
                             style={{ width: "100%", height: "auto" }}
+                            className="relative z-30 pointer-events-none"
+                        />
+                        <Image
+                            src="/floormap/1F_AreaBox_Entrance.png"
+                            alt={"1F_AreaBox_Entrance"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "100%", height: "auto" }}
+                            className="absolute bottom-7 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() =>
+                                handleEnterRoom("1F_AreaBox_Entrance")
+                            }
+                        />
+                        <Image
+                            src="/floormap/1F_AreaBox_FrontRoom.png"
+                            alt={"1F_AreaBox_FrontRoom"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "39%", height: "auto" }}
+                            className="absolute bottom-12 left-0 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() =>
+                                handleEnterRoom("1F_AreaBox_FrontRoom")
+                            }
+                        />
+                        <Image
+                            src="/floormap/1F_AreaBox_LivingRoom.png"
+                            alt={"1F_AreaBox_LivingRoom"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "46%", height: "auto" }}
+                            className="absolute bottom-12 right-0 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() =>
+                                handleEnterRoom("1F_AreaBox_LivingRoom")
+                            }
+                        />
+                        <Image
+                            src="/floormap/1F_AreaBox_Stairs.png"
+                            alt={"1F_AreaBox_Stairs"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "100%", height: "auto" }}
+                            className="absolute bottom-[2.9rem] right-0 z-10 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("1F_AreaBox_Stairs")}
+                        />
+                        <Image
+                            src="/floormap/1F_AreaBox_DiningRoom.png"
+                            alt={"1F_AreaBox_DiningRoom"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "39%", height: "auto" }}
+                            className="absolute top-[6.85rem] left-0 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() =>
+                                handleEnterRoom("1F_AreaBox_DiningRoom")
+                            }
+                        />
+                        <Image
+                            src="/floormap/1F_AreaBox_Kicken.png"
+                            alt={"1F_AreaBox_Kicken"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "26%", height: "auto" }}
+                            className="absolute top-[4rem] left-0 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("1F_AreaBox_Kicken")}
+                        />
+                        <Image
+                            src="/floormap/1F_AreaBox_RestRoom.png"
+                            alt={"1F_AreaBox_RestRoom"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "39%", height: "auto" }}
+                            className="absolute top-[4.2rem] right-0 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() =>
+                                handleEnterRoom("1F_AreaBox_RestRoom")
+                            }
                         />
                         {/** 客廳  */}
                         <PinIcon
@@ -301,18 +416,91 @@ const FloorMap: React.FC = () => {
                     </div>
                     <div
                         className={`absolute top-0 left-0 w-full h-full duration-300 ${
-                            floor == "2F"&& isOpenMap
+                            floor == "2F" && isOpenMap
                                 ? "opacity-100 pointer-events-auto"
                                 : "opacity-0 pointer-events-none"
                         }`}
                     >
                         <Image
-                            src="/Floor2.png"
+                            src="/floormap/Floor2_1.png"
                             alt={"FloorMap_Floor2"}
                             width={0}
                             height={0}
                             sizes="100vw"
                             style={{ width: "100%", height: "auto" }}
+                            className="relative z-30 pointer-events-none"
+                        />
+                        <Image
+                            src="/floormap/2F_AreaBox_Room1.png"
+                            alt={"2F_AreaBox_Room1"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "62.5%", height: "auto" }}
+                            className="absolute bottom-5 right-0 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("2F_AreaBox_Room1")}
+                        />
+                        <Image
+                            src="/floormap/2F_AreaBox_Room2.png"
+                            alt={"2F_AreaBox_Room2"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "35%", height: "auto" }}
+                            className="absolute bottom-5 left-1 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("2F_AreaBox_Room2")}
+                        />
+                        <Image
+                            src="/floormap/2F_AreaBox_Room3.png"
+                            alt={"2F_AreaBox_Room3"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "36%", height: "auto" }}
+                            className="absolute bottom-[7.1rem] left-1 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("2F_AreaBox_Room3")}
+                        />
+                        <Image
+                            src="/floormap/2F_AreaBox_Room4.png"
+                            alt={"2F_AreaBox_Room4"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "57%", height: "auto" }}
+                            className="absolute top-1 right-1 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("2F_AreaBox_Room4")}
+                        />
+                        <Image
+                            src="/floormap/2F_AreaBox_Room5.png"
+                            alt={"2F_AreaBox_Room5"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "39%", height: "auto" }}
+                            className="absolute top-1 left-1 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("2F_AreaBox_Room5")}
+                        />
+                        <Image
+                            src="/floormap/2F_AreaBox_LivingRoom.png"
+                            alt={"2F_AreaBox_LivingRoom"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "39%", height: "auto" }}
+                            className="absolute top-[8rem] right-1 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() =>
+                                handleEnterRoom("2F_AreaBox_LivingRoom")
+                            }
+                        />
+                        <Image
+                            src="/floormap/2F_AreaBox_Stairs.png"
+                            alt={"2F_AreaBox_Stairs"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "100%", height: "auto" }}
+                            className="absolute bottom-3 right-0 z-10 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("2F_AreaBox_Stairs")}
                         />
                         {/** 房間一  */}
                         <PinIcon
@@ -422,18 +610,59 @@ const FloorMap: React.FC = () => {
                     </div>
                     <div
                         className={`absolute top-0 left-0 w-full h-full duration-300 ${
-                            floor == "3F"&& isOpenMap
+                            floor == "3F" && isOpenMap
                                 ? "opacity-100 pointer-events-auto"
                                 : "opacity-0 pointer-events-none"
                         }`}
                     >
                         <Image
-                            src="/Floor3.png"
+                            src="/floormap/3F_AreaBox_Kitchen.png"
+                            alt={"3F_AreaBox_Kitchen"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "16%", height: "auto" }}
+                            className="absolute top-1 left-[3.3rem] z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("3F_AreaBox_Kitchen")}
+                        />
+                        <Image
+                            src="/floormap/3F_AreaBox_Toilet.png"
+                            alt={"3F_AreaBox_Toilet"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "22%", height: "auto" }}
+                            className="absolute top-1 left-1 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("3F_AreaBox_Toilet")}
+                        />
+                        <Image
+                            src="/floormap/3F_AreaBox_Room.png"
+                            alt={"3F_AreaBox_Room"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "57%", height: "auto" }}
+                            className="absolute top-1 right-1 z-20 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("3F_AreaBox_Room")}
+                        />
+                        <Image
+                            src="/floormap/Floor3_1.png"
                             alt={"FloorMap_Floor3"}
                             width={0}
                             height={0}
                             sizes="100vw"
                             style={{ width: "100%", height: "auto" }}
+                            className="relative z-30 pointer-events-none"
+                        />
+                        <Image
+                            src="/floormap/3F_AreaBox_Stairs.png"
+                            alt={"3F_AreaBox_Stairs"}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "40%", height: "auto" }}
+                            className="absolute top-10 left-0 z-10 hover:bg-gray-300 duration-150 cursor-pointer"
+                            onClick={() => handleEnterRoom("3F_AreaBox_Stairs")}
                         />
 
                         {/** 房間  */}

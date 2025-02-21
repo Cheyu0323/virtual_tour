@@ -24,7 +24,7 @@
     { "floor": "2F_AreaBox_Room1", "position": { "x": 20, "z": -13 } },
     { "floor": "2F_AreaBox_Room2", "position": { "x": 15, "z": 16 } },
     { "floor": "2F_AreaBox_Room3", "position": { "x": -9, "z": 16 } },
-    { "floor": "2F_AreaBox_LivingRoom", "position": { "x": -2, "z": 15 } },
+    { "floor": "2F_AreaBox_LivingRoom", "position": { "x": -2, "z": -16 } },
     { "floor": "2F_AreaBox_Stairs", "position": { "x": -20, "z": -3 } },
     { "floor": "2F_AreaBox_Room5", "position": { "x": -50, "z": 16 } },
     { "floor": "2F_AreaBox_Room4", "position": { "x": -50, "z": -13 } },

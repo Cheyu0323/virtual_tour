@@ -1,5 +1,6 @@
 [
     {
+        "switch": "1F_Switch_Entrance_Input_R",
         "wire": "1F_Light_Wire_Entrance",
         "bulb": [
             "1F_Recessed_Light_Entrance",
@@ -8,10 +9,12 @@
         ]
     },
     {
+        "switch": "1F_Switch_Entrance_Input_L",
         "wire": "1F_Light_Wire_Entrance_Outdoor",
         "bulb": []
     },
     {
+        "switch": "1F_Switch_LivingRoom_Input_R",
         "wire": "1F_Light_Wire_LivingRoom_Main",
         "bulb": [
             "1F_Main_Light_LivingRoom",
@@ -21,6 +24,7 @@
         ]
     },
     {
+        "switch": "1F_Switch_LivingRoom_Input_L",
         "wire": "1F_Light_Wire_LivingRoom",
         "bulb": [
             "1F_Recessed_Light_LivingRoom",
@@ -30,6 +34,7 @@
         ]
     },
     {
+        "switch": "1F_Switch_FrontRoom_Input_L",
         "wire": "1F_Light_Wire_FrontRoom",
         "bulb": [
             "1F_Recessed_Light_FrontRoom",
@@ -39,10 +44,12 @@
         ]
     },
     {
+        "switch": "1F_Switch_FrontRoom_Input_R",
         "wire": "1F_Light_Wire_FrontRoom_Main",
         "bulb": ["1F_Main_Light_FrontRoom", "1F_Main_Light_FrontRoom001"]
     },
     {
+        "switch": "1F_Switch_DiningRoom_Input_L",
         "wire": "1F_Light_Wire_DiningRoom",
         "bulb": [
             "1F_Recessed_Light_DiningRoom",
@@ -52,22 +59,27 @@
         ]
     },
     {
+        "switch": "1F_Switch_DiningRoom_Input_R",
         "wire": "1F_Light_Wire_DiningRoom_Main",
         "bulb": ["1F_Main_Light_DiningRoom", "1F_Main_Light_DiningRoom001"]
     },
     {
+        "switch": "1F_Switch_Kicken_Input",
         "wire": "1F_Light_Wire_Kitchen",
         "bulb": ["1F_Recessed_Light_Kitchen", "1F_Recessed_Light_Kitchen001"]
     },
     {
+        "switch": "1F_Switch_RestRoom_Input",
         "wire": "1F_Light_Wire_Toilet",
         "bulb": ["1F_Main_Light_Restroom", "1F_Main_Light_Restroom001"]
     },
     {
+        "switch": "1F_Switch_LivingRoom001_Input_L",
         "wire": "1F_Light_Wire_Restroom",
         "bulb": ["1F_Recessed_Light_Aisle005", "1F_Recessed_Light_Aisle006"]
     },
     {
+        "switch": "1F_Switch_LivingRoom001_Input_R",
         "wire": "1F_Light_Wire_Stairs",
         "bulb": [
             "1F_Recessed_Light_Aisle",
@@ -78,6 +90,7 @@
         ]
     },
     {
+        "switch": "2F_Switch_Room1_Input_L",
         "wire": "2F_Light_Wire_Room1",
         "bulb": [
             "2F_Recessed_Light_Room1001",
@@ -89,10 +102,12 @@
         ]
     },
     {
+        "switch": "2F_Switch_Room1_Input_R",
         "wire": "2F_Light_Wire_Room1_Main",
         "bulb": ["2F_Main_Light_Room1", "2F_Main_Light_Room1001"]
     },
     {
+        "switch": "2F_Switch_Room2_Input_L",
         "wire": "2F_Light_Wire_Room2",
         "bulb": [
             "2F_Recessed_Light_Room2001",
@@ -102,10 +117,12 @@
         ]
     },
     {
+        "switch": "2F_Switch_Room2_Input_R",
         "wire": "2F_Light_Wire_Room2_Main",
         "bulb": ["2F_Main_Light_Room2", "2F_Main_Light_Room2001"]
     },
     {
+        "switch": "2F_Switch_Room3_Input_L",
         "wire": "2F_Light_Wire_Room3",
         "bulb": [
             "2F_Recessed_Light_Room3",
@@ -115,10 +132,12 @@
         ]
     },
     {
+        "switch": "2F_Switch_Room3_Input_R",
         "wire": "2F_Light_Wire_Room3_Main",
         "bulb": ["2F_Main_Light_Room3", "2F_Main_Light_Room3001"]
     },
     {
+        "switch": "2F_Switch_Room4_Input_R",
         "wire": "2F_Light_Wire_Room4",
         "bulb": [
             "2F_Recessed_Light_Room4",
@@ -130,14 +149,17 @@
         ]
     },
     {
+        "switch": "2F_Switch_Room4_Input_L",
         "wire": "2F_Light_Wire_Room4_Main",
         "bulb": ["2F_Main_Light_Room4", "2F_Main_Light_Room4001"]
     },
     {
+        "switch": "2F_Switch_Room4_Tolite_Input",
         "wire": "2F_Light_Wire_Room4_Toilet",
         "bulb": ["2F_Light_Bulb_Room4_Toilet", "2F_Light_Bulb_Room4_Toilet001"]
     },
     {
+        "switch": "2F_Switch_Room5_Input_R",
         "wire": "2F_Light_Wire_Room5",
         "bulb": [
             "2F_Recessed_Light_Room5",
@@ -149,18 +171,22 @@
         ]
     },
     {
+        "switch": "2F_Switch_Room5_Input_L",
         "wire": "2F_Light_Wire_Room5_Main",
         "bulb": ["2F_Main_Light_Room5", "2F_Main_Light_Room5001"]
     },
     {
+        "switch": "2F_Switch_Room5_Tolite_Input",
         "wire": "2F_Light_Wire_Room5_Toilet",
         "bulb": ["2F_Light_Bulb_Room5_Toilet"]
     },
     {
+        "switch": "2F_Switch_Stairs_Input_L",
         "wire": "2F_Light_Wire_Stairs",
         "bulb": ["2F_Light_Bulb_Stairs", "2F_Light_Bulb_Stairs.001"]
     },
     {
+        "switch": "2F_Switch_Stairs_Input_R",
         "wire": "2F_Light_Wire_Stairs001",
         "bulb": [
             "2F_Light_Bulb_LivingRoom007",
@@ -169,10 +195,12 @@
         ]
     },
     {
+        "switch": "2F_Switch_Stairs_Input_R001",
         "wire": "2F_Light_Wire_Stairs002",
         "bulb": ["2F_Main_Light_Stairs"]
     },
     {
+        "switch": "2F_Switch_LivingRoom_Input_R",
         "wire": "2F_Light_Wire_LivingRoom",
         "bulb": [
             "2F_Light_Bulb_LivingRoom001",
@@ -184,6 +212,7 @@
         ]
     },
     {
+        "switch": "2F_Switch_LivingRoom_Input_L",
         "wire": "2F_Light_Wire_LivingRoom_Main",
         "bulb": [
             "2F_Main_Light_LivingRoom",
@@ -193,6 +222,7 @@
         ]
     },
     {
+        "switch": "3F_Switch_Balcony_Input_L",
         "wire": "3F_Light_Wire_Balcony",
         "bulb": [
             "3F_Recessed_Light_Balcony",
@@ -203,6 +233,7 @@
         ]
     },
     {
+        "switch": "3F_Switch_Kitchen_Input",
         "wire": "3F_Light_Wire_Kitchen",
         "bulb": [
             "3F_Recessed_Light_Kicken",
@@ -211,6 +242,7 @@
         ]
     },
     {
+        "switch": "3F_Switch_Room_Input_R",
         "wire": "3F_Light_Wire_Room",
         "bulb": [
             "3F_Recessed_Light_Room",
@@ -220,6 +252,7 @@
         ]
     },
     {
+        "switch": "3F_Switch_Room_Left_Input",
         "wire": "3F_Light_Wire_Room_Left",
         "bulb": [
             "3F_Recessed_Light_Room009",
@@ -228,10 +261,12 @@
         ]
     },
     {
+        "switch": "3F_Switch_Room_Input_L",
         "wire": "3F_Light_Wire_Room_Main",
         "bulb": ["3F_Main_Light_Room", "3F_Main_Light_Room001"]
     },
     {
+        "switch": "3F_Switch_Room_Right_Input",
         "wire": "3F_Light_Wire_Room_Right",
         "bulb": [
             "3F_Recessed_Light_Room006",
@@ -240,6 +275,7 @@
         ]
     },
     {
+        "switch": "3F_Switch_Stairs_Input_R",
         "wire": "3F_Light_Wire_Stairs",
         "bulb": [
             "3F_Recessed_Light_Stairs",
@@ -248,10 +284,12 @@
         ]
     },
     {
+        "switch": "3F_Switch_Stairs_Input_L",
         "wire": "3F_Light_Wire_Stairs_Main",
         "bulb": ["3F_Main_Light_Stairs", "3F_Main_Light_Stairs001"]
     },
     {
+        "switch": "3F_Switch_Tolite_Input",
         "wire": "3F_Light_Wire_Toilet",
         "bulb": ["3F_Recessed_Light_Toilet", "3F_Recessed_Light_Toilet001"]
     }

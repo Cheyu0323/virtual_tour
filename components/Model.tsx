@@ -9,6 +9,7 @@ import useGLTFStore, { GLTFResultType } from "@/store/useGLTFStore";
 import useCameraStore from "@/store/useCameraStore";
 import { hiddenAllChildMesh } from "@/utils/model";
 import enterPosition from "@/public/areaCenterData.json";
+import useLightBulbStore from "@/store/useLightBulbStore";
 
 const handlePerspectiveModel = ({
     meshs,
@@ -38,6 +39,7 @@ const Model: React.FC = () => {
         (state) => state.handletogglePanoramic
     );
     const [canMove, setCanMove] = useState<boolean>(true);
+    const clickInput = useLightBulbStore().handleClickInput;
 
     useEffect(() => {
         saveGLTF(gltf);
@@ -149,9 +151,18 @@ const Model: React.FC = () => {
 
     const handleClickModel = (e: ThreeEvent<MouseEvent>) => {
         const floorGap = 17;
+
         console.log("!! e.object.name", e.object.name);
+        if (
+            e.object.name.includes("Switch") &&
+            e.object.name.includes("Input")
+        ) {
+            clickInput(e.object.name);
+        }
+
         if (e.object.name.includes("AreaBox")) {
             togglePanoramic(true);
+
             window.gtag("event", `點擊模型進入區域_${e.object.name}`, {
                 category: "模型",
                 floor: currentFloor,

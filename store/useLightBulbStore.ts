@@ -3,6 +3,7 @@ import * as THREE from "three";
 import useGLTFStore from "./useGLTFStore";
 import lightBulbData from "@/public/lightBulbData.json";
 import { updateMaterialEmissiveIntensity } from "@/utils/material";
+import useHightLightStore from "./useHightLightStore";
 
 type LightBulbStoreType = {
     lightBulbList: Array<THREE.Mesh>;
@@ -14,6 +15,7 @@ type LightBulbStoreType = {
         display: boolean;
     }) => void;
     handleRestList: () => void;
+    handleClickInput: (input: string) => void;
 };
 
 const useLightBulbStore = create<LightBulbStoreType>((set) => ({
@@ -34,6 +36,16 @@ const useLightBulbStore = create<LightBulbStoreType>((set) => ({
             );
             if (findBulb == null) return { ...state };
             let bulbMeshList = [...state.lightBulbList] as Array<THREE.Mesh>;
+
+            if (nodes[findBulb.switch as keyof typeof nodes] != null) {
+                if (display) {
+                    nodes[findBulb.switch as keyof typeof nodes].rotation.x -=
+                        Math.PI;
+                } else {
+                    nodes[findBulb.switch as keyof typeof nodes].rotation.x -=
+                        Math.PI;
+                }
+            }
             findBulb.bulb.map((bulb) => {
                 if (nodes[bulb as keyof typeof nodes] != null) {
                     if (display) {
@@ -59,6 +71,14 @@ const useLightBulbStore = create<LightBulbStoreType>((set) => ({
 
             return { ...state, lightBulbList: bulbMeshList };
         }),
+    handleClickInput: (input: string) => {
+        const state = useHightLightStore.getState();
+        const findWire = lightBulbData.find((light) => light.switch == input);
+        if (findWire != null) {
+            state.handleToggleHightLight(findWire.wire);
+        }
+        return { ...state };
+    },
     handleRestList: () =>
         set((state) => {
             state.lightBulbList.map((bulb) =>
